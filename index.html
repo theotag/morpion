@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" async></script>
+    <title>Tic Tac Toe</title>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section>
+      <div id="tabScore" >  
+      <h1></h1>
+      </div> 
+      <div class="section">
+      <div  class="flex">
+      <div class="collumn">
+      <div id="invisible">
+      <label for="name-input">choisissez votre pseudo</label>
+      <input type="text" name="name" id="name" value="" maxlength="10">
+      </div>
+      <div id="choice">
+      <h1>Who begin</h1>
+      <button id="you">you</button>
+      <button id="bot">bot</button>
+    </div>
+    </div>
+    </div> 
+    
+    <div id="board" class="">
+      <div data-index="1" class="tile right-border bottom-border"></div>
+      <div data-index="2" class="tile right-border bottom-border"></div>
+      <div data-index="3" class="tile bottom-border"></div>
+      <div data-index="4" class="tile right-border bottom-border"></div>
+      <div data-index="5" class="tile right-border bottom-border"></div>
+      <div data-index="6" class="tile bottom-border"></div>
+      <div data-index="7" class="tile right-border"></div>
+      <div data-index="8" class="tile right-border"></div>
+      <div data-index="9" class="tile"></div>
+      <div id="strike" class="strike"></div>
+    </div>
+    </div>
+    <div id="game-over-area" class="hidden">
+      <h2 id="game-over-text">Winner is X</h2>
+      <button id="play-again">Play Again</button>
+    </div>
+    
+  </section>
+  </body>
+</html>

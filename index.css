@@ -1,0 +1,334 @@
+
+@font-face{
+  font-family: neon;
+  src: url("./assets/hello-denver-display.denver-display-regular-regular.ttf");
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+ overflow: hidden;
+}
+section{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(#f00,rgba(0,0,0,0.5)), url("./assets/wall.jpg");
+  background-size: 100%;
+  background-blend-mode: multiply;
+  text-shadow: 0 10px 10px #000;
+}
+
+
+.section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  content: '';
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 800px;;
+  height:100%;
+  background: radial-gradient(rgba(255,0,0,0.75), transparent,transparent);
+  border-radius: 50%;
+
+}
+
+
+
+#board {
+  display: none;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  cursor: pointer;
+  position: relative;
+
+}
+
+.tile {
+  color: currentColor;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.right-border {
+  border-right: 0.2em solid #ff0;
+  border-right-style: ridge;
+}
+
+.bottom-border {
+  border-bottom: 0.2em solid #ff0;
+  border-bottom-style: ridge;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.strike {
+  position: absolute;
+  background-color: darkred;
+}
+
+.strike-row-1 {
+  width: 100%;
+  height: 4px;
+  top: 15%;
+}
+.strike-row-2 {
+  width: 100%;
+  height: 4px;
+  top: 48%;
+}
+.strike-row-3 {
+  width: 100%;
+  height: 4px;
+  top: 83%;
+}
+.strike-column-1 {
+  height: 100%;
+  width: 4px;
+  left: 15%;
+}
+.strike-column-2 {
+  height: 100%;
+  width: 4px;
+  left: 48%;
+}
+.strike-column-3 {
+  height: 100%;
+  width: 4px;
+  left: 83%;
+}
+.strike-diagonal-1 {
+  width: 90%;
+  height: 4px;
+  top: 50%;
+  left: 5%;
+  transform: skewY(45deg);
+}
+.strike-diagonal-2 {
+  width: 90%;
+  height: 4px;
+  top: 50%;
+  left: 5%;
+  transform: skewY(-45deg);
+}
+
+#tabScore h1 {
+  margin-top: 85px;
+  position: relative;
+  font-size: 3em;
+  font-family: neon;
+  font-weight: bolder;
+  display: inline-block;
+ 
+  
+}
+
+@keyframes flashing {
+  0%, 18%, 21%, 32%, 35%, 39%, 42%, 100% {
+    text-shadow:
+      0 0 16px #ffd6d6,
+      0 0 16px #ffd6d6,
+      0 0 32px  #ff035b,
+      0 0 64px  #ff035b,
+      0 0 90px  #ff035b,
+      0 0 124px  #ff035b;
+    box-shadow:
+      0 0 8px #fff,
+      inset 0 0 8px #fff,
+      0 0 32px #04d9ff,
+      inset 0 0 32px #04d9ff,
+      0 0 64px #04d9ff,
+      inset 0 0 64px #04d9ff;
+  }
+  20%, 34%, 41% {        
+    text-shadow: none;
+    box-shadow: none;
+  }    
+}
+#tabScore{
+  position:static;
+  display: none;
+  font-family: 'Commissioner', sans-serif;
+  color: #ffd6d6;
+  text-align: center;
+  line-height: 1;
+  border-radius: 50%;
+  border: 10px solid #fff;
+  margin-top: 40px;
+  width: 450px;
+  height: 230px;
+  text-transform: uppercase;
+  animation: flashing 1.4s infinite alternate;
+
+}
+
+#game-over-area {
+  position: absolute;
+  background-color: #c4c4c4;
+  text-align: center;
+  border: white 8px solid;
+  border-style: ridge;
+  opacity: 0.6;
+  margin-top: 400px;
+  padding: 50px;
+  width: 50%;
+  text-transform: uppercase;
+  font-family: verdana;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+  color: white;
+  text-shadow: 1px 1px 1px #686969,
+      1px 2px 1px #686969,
+      1px 3px 1px #686969,
+      1px 4px 1px #686969,
+      1px 5px 1px #686969,
+      1px 6px 1px #686969,
+      1px 7px 1px #686969,
+      1px 8px 1px #686969,
+      1px 9px 1px #686969,
+      1px 10px 1px #686969,
+  1px 18px 6px rgba(16,16,16,0.4),
+  1px 22px 10px rgba(16,16,16,0.2),
+  1px 25px 35px rgba(16,16,16,0.2),
+  1px 30px 60px rgba(16,16,16,0.4);
+}
+
+h2 {
+  color: currentColor;
+  font-size: 2em;
+  margin-top: 0px;
+}
+
+#choice button{
+  width: 100px;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 10%;
+  background-color: transparent;
+  color: currentColor;
+  border: currentColor 4px solid;
+  border-style: ridge;
+  font-family: verdana;
+  padding: 10px;
+  padding-bottom: 5%;
+  font-size: 1.5em;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+  text-shadow: 1px 1px 1px #686969,
+      1px 2px 1px #686969,
+      1px 3px 1px #686969,
+      1px 4px 1px #686969,
+      1px 5px 1px #686969,
+      1px 6px 1px #686969,
+      1px 7px 1px #686969,
+  1px 10px 6px rgba(16,16,16,0.4),
+  1px 18px 10px rgba(16,16,16,0.2),
+  1px 20px 35px rgba(16,16,16,0.2),
+  1px 26px 60px rgba(16,16,16,0.4);
+
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+
+
+.flex{
+  display: flex;
+  border: 6px solid #fff;
+  border-style: ridge;
+  justify-content: center;
+  align-items: center;
+  width: 420px;
+  background-color: #c4c4c4;
+  text-align: center;
+}
+.collumn {
+
+  text-align: center;
+}
+
+label {
+  text-transform: uppercase;
+  font-family: verdana;
+  color: white;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px #686969,
+      1px 2px 1px #686969,
+      1px 3px 1px #686969,
+      1px 4px 1px #686969,
+      1px 5px 1px #686969,
+      1px 6px 1px #686969,
+      1px 7px 1px #686969,
+  1px 10px 6px rgba(16,16,16,0.4),
+  1px 18px 10px rgba(16,16,16,0.2),
+  1px 20px 35px rgba(16,16,16,0.2),
+  1px 26px 60px rgba(16,16,16,0.4);
+}
+input{
+  margin-top: 2%;
+  text-align: center;
+  background-color: #c4c4c4;
+  font-size: 30px;
+  border-radius: 50px;
+}
+
+
+input:hover{
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
+
+
+@media screen and (max-width: 991px){
+  .section{
+    margin-top: 40px;
+    width: 100%;
+  }
+  .flex{
+    width: 300px;
+  }
+  input{
+    width: 270px;
+  }
+  label{
+    font-size: 15px;
+  }
+  #tabScore{
+    width: 350px;
+    font-size: 12px;
+  }
+  #game-over-area{
+    width: 100%;
+    margin-top: 320px;
+  }
+  #board{
+    margin-top: 40px;
+    grid-template-columns: 90px 90px 90px;
+    grid-template-rows: 90px 90px 90px;
+  }
+  .tile{
+    font-size: 2em;
+  }
+}
