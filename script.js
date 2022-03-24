@@ -11,37 +11,8 @@ let choice = ""
 const boardState = Array(tiles.length);
 boardState.fill(null);
 
-//Elements
-playerChoice = document.getElementById("choice")
-const you = document.getElementById("you")
-const bot = document.getElementById("bot")
-const tabScore = document.querySelector("#tabScore")
-const h1 = document.querySelector("h1")
-const strike = document.getElementById("strike");
-const gameOverArea = document.getElementById("game-over-area");
-const gameOverText = document.getElementById("game-over-text");
-const playAgain = document.getElementById("play-again");
-playAgain.addEventListener("click", startNewGame);
-const board = document.querySelector("#board")
-const flex = document.querySelector(".flex")
-const playerName = document.getElementById("name");
-const invisible = document.getElementById("invisible")
-
-const playGame = () => {
-  invisible.style.display = "none"
-  yourName = playerName.value.toUpperCase()
-  choice = you.innerText
-  flex.style.display = "none"
-  tabScore.style.display = "block"
-  board.style.display = "grid"
-  if (yourName.length > 5 && yourName.length < 9) {
-    h1.style.fontSize = "2.5em"
-    h1.style.marginTop = "90px"
-  }else if (yourName.length > 8) {
-    h1.style.fontSize = "2.3em"
-    h1.style.marginTop = "93px"
-  }
-  if (yourName === "REGINE") {
+const song = () => {
+   if (yourName === "REGINE") {
     regineSound.load()
     regineSound.play()
   }
@@ -78,6 +49,39 @@ const playGame = () => {
     chillSound.load()
     chillSound.play()
   }
+}
+  
+//Elements
+playerChoice = document.getElementById("choice")
+const you = document.getElementById("you")
+const bot = document.getElementById("bot")
+const tabScore = document.querySelector("#tabScore")
+const h1 = document.querySelector("h1")
+const strike = document.getElementById("strike");
+const gameOverArea = document.getElementById("game-over-area");
+const gameOverText = document.getElementById("game-over-text");
+const playAgain = document.getElementById("play-again");
+playAgain.addEventListener("click", startNewGame);
+const board = document.querySelector("#board")
+const flex = document.querySelector(".flex")
+const playerName = document.getElementById("name");
+const invisible = document.getElementById("invisible")
+
+const playGame = () => {
+  invisible.style.display = "none"
+  yourName = playerName.value.toUpperCase()
+  choice = you.innerText
+  flex.style.display = "none"
+  tabScore.style.display = "block"
+  board.style.display = "grid"
+  if (yourName.length > 5 && yourName.length < 9) {
+    h1.style.fontSize = "2.5em"
+    h1.style.marginTop = "90px"
+  }else if (yourName.length > 8) {
+    h1.style.fontSize = "2.3em"
+    h1.style.marginTop = "93px"
+  }
+  song()
   h1.innerText = `${yourName} : ${scorePlayer} | bot : ${scoreBot}`
     
 }
@@ -126,7 +130,7 @@ const baptisteSound = new Audio("./assets/baptiste.mp3")
 you.addEventListener("click",playerYou)
 bot.addEventListener("click",playerBot)
 
-function entierAleatoire(min, max)
+function randomNumber(min, max)
 {
  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -140,9 +144,9 @@ function turnBot() {
     return;
   }
 
-    let random = entierAleatoire(0,8)
+    let random = randomNumber(0,8)
     while (tiles[random].innerText !== "") {
-      random = entierAleatoire(0,8)
+      random = randomNumber(0,8)
     }
     const tileNumber = random
     tiles[random].innerText = PLAYER_O;
