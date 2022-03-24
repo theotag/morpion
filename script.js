@@ -86,7 +86,7 @@ const playGame = () => {
     
 }
 
-const chosePlayer = () => {
+const choosePlayer = () => {
   if (playerName.value.length === 0) {
     playerName.placeholder = "you didn't give a name"
   }else{
@@ -96,12 +96,12 @@ const chosePlayer = () => {
 }
 
 const playerYou = () => {
-  chosePlayer()
+  choosePlayer()
   
 }
 
 const playerBot = () => {
-  chosePlayer()
+  choosePlayer()
   turnBot()
 }
 
